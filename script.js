@@ -1,3 +1,16 @@
+const gridEl = document.getElementById('pixelGrid');
+const paletteEl = document.getElementById('paletteGrid');
+const bgSwatchEl = document.getElementById('bgSwatch');
+const bgPickerEl = document.getElementById('bgPicker');
+const toolButtons = document.querySelectorAll('.tool-btn');
+const clearButton = document.getElementById('clearBtn');
+const exportBtn = document.getElementById('exportBtn');    
+const downloadBtn = document.getElementById('downloadBtn');  
+const exportPreview = document.getElementById('exportPreview');
+const exportImg = document.getElementById('exportImg');
+const closePreviewBtn = document.getElementById('closePreviewBtn');
+const downloadFromPreviewBtn = document.getElementById('downloadFromPreviewBtn');
+
 const GRID_SIZE = 32;
 const COLORS = [
   '#FF0000',
