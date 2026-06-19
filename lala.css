@@ -91,6 +91,7 @@ a {
     height: clamp(55px, 8vw, 100px);
     object-fit: contain;
     image-rendering: pixelated;
+     display: block;
     transition: .25s ease;
     filter: drop-shadow(0 0 0 2px var(--clr-accent));
 }
