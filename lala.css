@@ -93,15 +93,12 @@ a {
     image-rendering: pixelated;
     display: block;
     transition: .25s ease;
-   border: 2px solid var(--clr-accent);
-    border-radius: 10px;
+    filter: drop-shadow(0 0 0 2px var(--clr-accent));
 }
 
 
 .footer-logo:hover {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 14px rgb(245, 255, 205));
-    border-color: var(--clr-accent-light);
+  filter: drop-shadow(0 0 0 4px var(--clr-accent-light))
 }
 
 
