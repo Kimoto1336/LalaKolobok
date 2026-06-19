@@ -72,18 +72,29 @@ a {
     text-decoration: none;
 }
 
-.footer-logo {
-    width: clamp(40px, 5vw, 70px);
-    height: auto;
+.cover-logo img {
+    width: clamp(32px, 5vw, 56px);
+    height: clamp(32px, 5vw, 56px);
     object-fit: contain;
     image-rendering: pixelated;
-    transition: transform .25s ease, filter .25s ease;
 }
 
-.footer-logo:hover {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 12px rgba(176,196,0,.5));
+
+.footer-logo {
+    width: clamp(55px, 8vw, 100px);
+    height: clamp(55px, 8vw, 100px);
+    object-fit: contain;
+    image-rendering: pixelated;
+    display: block;
+    transition: .25s ease;
 }
+
+
+.footer-logo:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 14px rgba(176,196,0,.55));
+}
+
 
 .footer-brand {
     display: flex;
