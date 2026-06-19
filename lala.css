@@ -79,6 +79,12 @@ a {
     image-rendering: pixelated;
 }
 
+.cover-logo-img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    image-rendering: pixelated;
+}
 
 .footer-logo {
     width: clamp(55px, 8vw, 100px);
