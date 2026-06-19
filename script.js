@@ -106,3 +106,60 @@ function getPixel(row, col) {
     if (row < 0 || row >= GRID_SIZE || col < 0 || col >= GRID_SIZE) return -1;
     return grid[row][col];
 }
+function floodFill(row, col, oldColor, newColor) {
+    if (oldColor === newColor) return;
+    if (row < 0 || row >= GRID_SIZE || col < 0 || col >= GRID_SIZE) return;
+    if (getPixel(row, col) !== oldColor) return;
+    const queue = [[row, col]];
+    const visited = new Set();
+    visited.add(row + ',' + col);
+    const pixelsToFill = [];
+    while (queue.length > 0) {
+        const [r, c] = queue.shift();
+        pixelsToFill.push([r, c]);
+        const neighbors = [
+            [r - 1, c], [r + 1, c],
+            [r, c - 1], [r, c + 1]
+        ];
+        for (const [nr, nc] of neighbors) {
+            const key = nr + ',' + nc;
+            if (nr >= 0 && nr < GRID_SIZE && nc >= 0 && nc < GRID_SIZE &&
+                !visited.has(key) && getPixel(nr, nc) === oldColor) {
+                visited.add(key);
+                queue.push([nr, nc]);
+            }
+        }
+    }
+
+    if (pixelsToFill.length === 0) return;
+    const elements = []; 
+    for (const [r, c] of pixelsToFill) {
+        grid[r][c] = newColor;
+        const el = gridEl.querySelector(`.pixel[data-row="${r}"][data-col="${c}"]`);
+        if (el) {
+            el.style.background = (newColor === -1) ? BG_COLOR : COLORS[newColor];
+            el.style.opacity = '0'; 
+            elements.push(el);
+        }
+    }
+
+    anime({
+        targets: elements,       
+        opacity: [0, 1],      
+        duration: 400,          
+        easing: 'easeOutQuad',    
+        delay: (el, i) => {
+            const r = parseInt(el.dataset.row);
+            const c = parseInt(el.dataset.col);
+            const distance = Math.abs(r - row) + Math.abs(c - col);
+            return distance * 20 + i * 1.5;
+        },
+        complete: function() {
+            elements.forEach(el => el.style.opacity = '1');
+            saveGrid();
+        }
+    });
+    setTimeout(() => {
+        elements.forEach(el => el.style.opacity = '1');
+    }, pixelsToFill.length * 2 + 500);
+}
