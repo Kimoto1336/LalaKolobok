@@ -93,6 +93,7 @@ a {
     image-rendering: pixelated;
     display: block;
     transition: .25s ease;
+    border: 1px white; 
 }
 
 .footer-logo:hover {
