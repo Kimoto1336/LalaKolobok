@@ -1,5 +1,3 @@
-//1. Настройка 
-
 const GRID_SIZE = 32;
 const COLORS = [
   '#FF0000',
@@ -54,4 +52,57 @@ function renderGrid() {
             gridEl.appendChild(pixel);
         }
     }
+}
+
+
+function renderPalette() {
+    paletteEl.innerHTML = '';
+    for (let i = 0; i < COLORS.length; i++) {
+        const swatch = document.createElement('div');
+        swatch.className = 'color-swatch';
+        swatch.style.background = COLORS[i];
+        swatch.dataset.idx = i;
+        swatch.addEventListener('click', () => selectColor(i));
+        paletteEl.appendChild(swatch);
+    }
+    bgSwatchEl.style.background = BG_COLOR;
+    updateActiveUI();
+}
+
+function updateActiveUI() {
+    document.querySelectorAll('.color-swatch').forEach(el => el.classList.remove('active'));
+    bgSwatchEl.classList.remove('active');
+    if (selectedColorIndex === -1) {
+        bgSwatchEl.classList.add('active');
+    } else {
+        const swatches = document.querySelectorAll('.color-swatch');
+        if (selectedColorIndex >= 0 && selectedColorIndex < swatches.length) {
+            swatches[selectedColorIndex].classList.add('active');
+        }
+    }
+}
+
+function selectColor(index) {
+    if (index < -1 || index >= COLORS.length) return;
+    selectedColorIndex = index;
+    updateActiveUI();
+    saveGrid();
+}
+//функции инструментов 
+function getPixelElement(row, col) {
+    return gridEl.querySelector(`.pixel[data-row="${row}"][data-col="${col}"]`);
+}
+
+function setPixel(row, col, colorIndex) {
+    if (row < 0 || row >= GRID_SIZE || col < 0 || col >= GRID_SIZE) return;
+    grid[row][col] = colorIndex;
+    const el = getPixelElement(row, col);
+    if (el) {
+        el.style.background = (colorIndex === -1) ? BG_COLOR : COLORS[colorIndex];
+    }
+}
+
+function getPixel(row, col) {
+    if (row < 0 || row >= GRID_SIZE || col < 0 || col >= GRID_SIZE) return -1;
+    return grid[row][col];
 }
