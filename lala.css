@@ -95,10 +95,9 @@ a {
     transition: .25s ease;
 }
 
-
 .footer-logo:hover {
     transform: scale(1.08);
-    filter: drop-shadow(0 0 14px rgba(176,196,0,.55));
+    filter: drop-shadow(0 0 14px rgba(232, 255, 21, 0.8));
 }
 
 
