@@ -1,16 +1,3 @@
-const gridEl = document.getElementById('pixelGrid');
-const paletteEl = document.getElementById('paletteGrid');
-const bgSwatchEl = document.getElementById('bgSwatch');
-const bgPickerEl = document.getElementById('bgPicker');
-const toolButtons = document.querySelectorAll('.tool-btn');
-const clearButton = document.getElementById('clearBtn');
-const exportBtn = document.getElementById('exportBtn');    
-const downloadBtn = document.getElementById('downloadBtn');  
-const exportPreview = document.getElementById('exportPreview');
-const exportImg = document.getElementById('exportImg');
-const closePreviewBtn = document.getElementById('closePreviewBtn');
-const downloadFromPreviewBtn = document.getElementById('downloadFromPreviewBtn');
-
 const GRID_SIZE = 32;
 const COLORS = [
   '#FF0000',
@@ -29,7 +16,20 @@ let selectedColorIndex = 0;
 let currentTool = 'pencil';
 let isDrawing = false;
 
-function intGrid() {
+const gridEl = document.getElementById('pixelGrid');
+const paletteEl = document.getElementById('paletteGrid');
+const bgSwatchEl = document.getElementById('bgSwatch');
+const bgPickerEl = document.getElementById('bgPicker');
+const toolButtons = document.querySelectorAll('.tool-btn');
+const clearButton = document.getElementById('clearBtn');
+const exportBtn = document.getElementById('exportBtn');    
+const downloadBtn = document.getElementById('downloadBtn');  
+const exportPreview = document.getElementById('exportPreview');
+const exportImg = document.getElementById('exportImg');
+const closePreviewBtn = document.getElementById('closePreviewBtn');
+const downloadFromPreviewBtn = document.getElementById('downloadFromPreviewBtn');
+
+function initGrid() {
   const loaded = loadGrid();
   if (!loaded){
     grid =[];
@@ -37,9 +37,9 @@ function intGrid() {
       grid[r] = [];
             for (let c = 0; c < GRID_SIZE; c++) {
                 grid[r][c] = -1;
+      }
     }
   }
-}
   if (!loadSelectedColor()) {
     selectedColorIndex = 0;
   }
