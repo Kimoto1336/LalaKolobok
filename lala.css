@@ -97,7 +97,7 @@ a {
 
 .footer-logo:hover {
     transform: scale(1.08);
-    filter: drop-shadow(0 0 14px rgba(232, 255, 21, 0.8));
+    filter: drop-shadow(0 0 14px rgb(229, 255, 0));
 }
 
 
