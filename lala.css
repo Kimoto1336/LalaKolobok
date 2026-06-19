@@ -72,6 +72,25 @@ a {
     text-decoration: none;
 }
 
+.footer-logo {
+    width: clamp(40px, 5vw, 70px);
+    height: auto;
+    object-fit: contain;
+    image-rendering: pixelated;
+    transition: transform .25s ease, filter .25s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 12px rgba(176,196,0,.5));
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
 button {
     font-family: inherit;
     cursor: pointer;
