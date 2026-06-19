@@ -92,13 +92,6 @@ function updateActiveUI() {
         }
     }
 }
-
-function selectColor(index) {
-    if (index < -1 || index >= COLORS.length) return;
-    selectedColorIndex = index;
-    updateActiveUI();
-    saveGrid();
-}
 //функции инструментов 
 function getPixelElement(row, col) {
     return gridEl.querySelector(`.pixel[data-row="${row}"][data-col="${col}"]`);
@@ -117,7 +110,12 @@ function getPixel(row, col) {
     if (row < 0 || row >= GRID_SIZE || col < 0 || col >= GRID_SIZE) return -1;
     return grid[row][col];
 }
-//ПЕРЕКЛЮЧЕНИЕ ИНСТРУМЕНТОВ
+function selectColor(index) {
+    if (index < -1 || index >= COLORS.length) return;
+    selectedColorIndex = index;
+    updateActiveUI();
+    saveGrid();
+}
 function selectTool(toolName) {
     currentTool = toolName;
     toolButtons.forEach(btn => {
