@@ -91,16 +91,20 @@ a {
     height: clamp(55px, 8vw, 100px);
     object-fit: contain;
     image-rendering: pixelated;
-     display: block;
+    display: block;
     transition: .25s ease;
-    filter: drop-shadow(0 0 0 2px var(--clr-accent));
+    filter: 
+        drop-shadow(0 0 0 2px var(--clr-accent))
+        drop-shadow(0 0 8px var(--clr-accent-light));
 }
-
 
 .footer-logo:hover {
-  filter: drop-shadow(0 0 0 4px var(--clr-accent-light))
+    filter: 
+        drop-shadow(0 0 0 4px var(--clr-accent-light))
+        drop-shadow(0 0 15px var(--clr-accent-light))
+        drop-shadow(0 0 40px var(--clr-accent));
+    transform: scale(1.08); /* опционально */
 }
-
 
 .footer-brand {
     display: flex;
