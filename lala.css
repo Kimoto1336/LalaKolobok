@@ -89,20 +89,24 @@ a {
 .footer-logo {
     width: clamp(55px, 8vw, 100px);
     height: clamp(55px, 8vw, 100px);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    object-fit: contain;
     image-rendering: pixelated;
-    display: inline-block;
-    transition: .25s ease;
-    filter: drop-shadow(0 0 0 2px var(--clr-accent));
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+
+    filter:
+            drop-shadow(0 0 8px var(--clr-accent-light))
+            drop-shadow(0 0 20px var(--clr-accent))
+            drop-shadow(0 0 40px var(--clr-accent-light));
 }
 
 .footer-logo:hover {
-    background-image: url('FAMDEV-HOVER.png'); 
-    filter: drop-shadow(0 0 0 4px var(--clr-accent-light));
+    transform: scale(1.08);
+    filter:
+            drop-shadow(0 0 12px var(--clr-accent-light))
+            drop-shadow(0 0 30px var(--clr-accent))
+            drop-shadow(0 0 60px var(--clr-accent-light));
 }
-
 .footer-brand {
     display: flex;
     align-items: center;
