@@ -162,11 +162,16 @@ function floodFill(row, col, oldColor, newColor) {
         const el = gridEl.querySelector(`.pixel[data-row="${r}"][data-col="${c}"]`);
         if (el) {
             el.style.background = (newColor === -1) ? BG_COLOR : COLORS[newColor];
-            el.style.opacity = '0'; 
+           if (typeof anime !== 'undefined') {
+                el.style.opacity = '0';
+            } else {
+                el.style.opacity = '1';
+            }
             elements.push(el);
         }
     }
 
+  if (typeof anime !== 'undefined') {
     anime({
         targets: elements,       
         opacity: [0, 1],      
@@ -185,7 +190,12 @@ function floodFill(row, col, oldColor, newColor) {
     });
     setTimeout(() => {
         elements.forEach(el => el.style.opacity = '1');
-    }, pixelsToFill.length * 2 + 500);
+            saveGrid();
+        }, pixelsToFill.length * 2 + 500);
+    } else {
+        elements.forEach(el => el.style.opacity = '1');
+        saveGrid();
+    }
 }
 //мышь слепая
 function onPixelMouseDown(e) {
